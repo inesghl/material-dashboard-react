@@ -1,19 +1,4 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
+/*
 import Card from "@mui/material/Card";
 
 // Material Dashboard 2 React components
@@ -68,3 +53,78 @@ function Cover() {
 }
 
 export default Cover;
+*/
+
+import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import axios from 'axios';
+
+
+export default function ForgotPassword(props){ 
+   
+  const [email,setEmail] = useState(''); 
+const [errorMessage , setErrorMessage] = useState('');
+
+  const Submit = (e)=>{
+   
+      e.preventDefault();
+      try {
+        const response = axios.post('http://localhost:8050/forgotPassword', { email });
+        console.log(response.data);
+        
+      } catch (error) {
+        console.log(error.response.data);
+        setErrorMessage('user not found ')
+      }
+    }  
+    return(
+<div className="cover">
+      <div>
+        <Container>
+          <Row className="vh-100 d-flex justify-content-center align-items-center ">
+            <Col md={8} lg={6} xs={12}>
+              <div className="border border-3 border-danger"></div>
+              <Card className="shadow">
+                <Card.Body>
+                  <div className="mb-3 mt-md-4">
+                    <h2 className="fw-bold mb-2 text-uppercase ">Albaraka Bank</h2>
+                    <p className=" mb-5">Please enter your username and password!</p>
+                    <div className="mb-3">
+                      <Form onSubmit={Submit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label className="text-center">
+                            Username
+                          </Form.Label>
+                          <Form.Control type="email" placeholder="email" className="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </Form.Group>
+                       
+                        {errorMessage && <p className="text-danger">{errorMessage}</p>} {/* render error message if there is an error */}
+                       
+                       
+                        <div className="d-grid">
+                          <Button variant="danger" type="submit">
+                            submit
+                          </Button>
+                        </div>
+                      </Form>
+                     
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+);
+
+}

@@ -52,7 +52,6 @@ import switchButton from "assets/theme-dark/components/form/switchButton";
 import divider from "assets/theme-dark/components/divider";
 import tableContainer from "assets/theme-dark/components/table/tableContainer";
 import tableHead from "assets/theme-dark/components/table/tableHead";
-import tableCell from "assets/theme-dark/components/table/tableCell";
 import linearProgress from "assets/theme-dark/components/linearProgress";
 import breadcrumbs from "assets/theme-dark/components/breadcrumbs";
 import slider from "assets/theme-dark/components/slider";
@@ -85,7 +84,6 @@ import dialogContentText from "assets/theme-dark/components/dialog/dialogContent
 import dialogActions from "assets/theme-dark/components/dialog/dialogActions";
 
 export default createTheme({
-  direction: "rtl",
   breakpoints: { ...breakpoints },
   palette: { ...colors },
   typography: { ...typography },
@@ -125,7 +123,17 @@ export default createTheme({
     MuiDivider: { ...divider },
     MuiTableContainer: { ...tableContainer },
     MuiTableHead: { ...tableHead },
-    MuiTableCell: { ...tableCell },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          borderBottom: "none",
+          fontSize: "0.875rem",
+          fontWeight: 400,
+          padding: "1rem",
+          verticalAlign: "middle",
+        },
+      },
+    },
     MuiLinearProgress: { ...linearProgress },
     MuiBreadcrumbs: { ...breadcrumbs },
     MuiSlider: { ...slider },

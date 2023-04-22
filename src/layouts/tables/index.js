@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -28,11 +14,12 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
+import userData from "layouts/tables/data/userData";
+import editUser from "./data/editUser";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function Tables() {
-  const { columns, rows } = authorsTableData();
+  const { columns, rows } = userData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
 
   return (
@@ -53,8 +40,27 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Authors Table
+                   Table utilisateur
                 </MDTypography>
+                <MDTypography
+          component="button"
+          color="success"
+          underline="hover"
+          style={{
+            fontSize: '1rem', // Reduce the font size
+    padding: '0.3rem 0.5rem', // Adjust the padding
+    margin: '0.2rem', // Adjust the margin
+    border: 'none',
+    color : 'white',
+    background: 'none',
+    cursor: 'pointer',
+    textDecoration: 'underline', // Remove underline
+    fontWeight: 'bold',
+  
+          }}
+        >
+          ajouter un utilisateur
+        </MDTypography>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
